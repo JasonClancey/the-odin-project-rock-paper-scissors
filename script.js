@@ -36,7 +36,7 @@ const playerChoice = prompt("Please pick either rock, paper or scissors.", "");
 const playerSelection = playerChoice.toLowerCase();
 const computerSelection = computerPlay();
 
-function playRound(playerSelection, computerSelection) {
+function playRound(computerSelection, playerSelection) {
 
     console.log(`Computer choice:  ${computerSelection}`);
     console.log(`Player choice:  ${playerSelection}`);
