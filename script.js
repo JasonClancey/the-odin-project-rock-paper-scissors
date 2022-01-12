@@ -24,9 +24,13 @@ function getUpdatedScore() {
                 Computer ${computerScore}
                 Player: ${playerScore}
                 Draws: ${draws}`)
+
+
 }
 
 function game() {
+
+while (playerScore !== 5 || computerScore !== 5) {
 
 const playerChoice = prompt("Please pick either rock, paper or scissors.", "");
 const playerSelection = playerChoice.toLowerCase();
@@ -67,5 +71,16 @@ function playRound(playerSelection, computerSelection) {
 playRound(computerSelection, playerSelection)
 getUpdatedScore()
 
+if (playerScore === 5) {
+    console.log("The player wins!")
+    break
+}
+
+else if (computerScore === 5) {
+    console.log("The computer wins!")
+    break
+} 
+
+}
 
 }
