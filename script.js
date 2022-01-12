@@ -1,21 +1,36 @@
-function game() {
+let playerScore = 0;
+let computerScore = 0;
+let winner = '';
+let draws = 0;
 
 function computerPlay() {
     /* computer picks a random number between 0 and 2 to select a value from the array of choices */
     let choices = ["rock", "paper", "scissors"];
-    let chosenValue = Math.floor(Math.random() * (2-0+1) + 0);
+    let chosenValue = Math.floor(Math.random() * 3);
     let computerChoice = choices[chosenValue];
     return computerChoice
-
 }
 
-let playerScore = 0;
-let computerScore = 0;
+function getUpdatedScore() {
+    if (winner === "player") {
+        ++playerScore
+    }
+    else if (winner === "computer") {
+        ++computerScore
+    } 
+    else if (winner === "draw")
+        ++draws
+    console.log(`Scores:
+                Computer ${computerScore}
+                Player: ${playerScore}
+                Draws: ${draws}`)
+}
 
+function game() {
 
-const computerSelection = computerPlay();
 const playerChoice = prompt("Please pick either rock, paper or scissors.", "");
 const playerSelection = playerChoice.toLowerCase();
+const computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) {
 
@@ -25,6 +40,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
         console.log("Draw!")
+        winner = 'draw'
     }
 
     if (
@@ -33,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
         playerSelection === "scissors" && computerSelection === "paper"
     ) {
             console.log(`You win, ${playerSelection} beats ${computerSelection}!`);
-            ++playerScore;
+            winner = "player"
     }
     
     if (
@@ -42,13 +58,14 @@ function playRound(playerSelection, computerSelection) {
         computerSelection === "scissors" && playerSelection === "paper"
     ) {
             console.log(`You lose, ${computerSelection} beats ${playerSelection}!`);
-            ++computerScore;
+            winner = "computer"
     }
 
-}
-
-playRound(playerSelection, computerSelection);
 
 }
 
+playRound(computerSelection, playerSelection)
+getUpdatedScore()
 
+
+}
